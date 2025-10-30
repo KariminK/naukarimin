@@ -1,4 +1,4 @@
-import { Header, Navbar } from "~/components/modules";
+import { Footer, Header, Navbar } from "~/components/modules";
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
@@ -13,6 +13,7 @@ export default function Home() {
     <>
       <Navbar></Navbar>
       <Header></Header>
+      <Footer></Footer>
     </>
   );
 }
