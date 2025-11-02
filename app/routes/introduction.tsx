@@ -4,7 +4,6 @@ export default function Introduction() {
   const { lang = "Unknown" } = useParams<{ lang: string }>();
   return (
     <>
-      <Navbar></Navbar>
       <section className="max-w-7xl text-center mx-auto">
         <h1 className="text-center mt-20 font-bold text-4xl mb-5">{lang}</h1>
         <p className="text-slate-200">
@@ -16,7 +15,6 @@ export default function Introduction() {
         </p>
       </section>
       <TableOfContents></TableOfContents>
-      <Footer></Footer>
     </>
   );
 }
