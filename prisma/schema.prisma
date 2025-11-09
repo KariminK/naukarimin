@@ -13,3 +13,26 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Section {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  chapter   Chapter? @relation(fields: [chapterId], references: [id])
+  chapterId Int?
+}
+
+model Chapter {
+  id         Int       @id @default(autoincrement())
+  title      String
+  sections   Section[]
+  language   Language? @relation(fields: [languageId], references: [id])
+  languageId Int?
+}
+
+model Language {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String
+  chapters    Chapter[]
+}
