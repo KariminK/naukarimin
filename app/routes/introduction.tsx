@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { Footer, Header, Navbar, TableOfContents } from "~/components/modules";
+import { TableOfContents } from "~/features";
 export default function Introduction() {
   const { lang = "Unknown" } = useParams<{ lang: string }>();
   return (
@@ -13,8 +13,20 @@ export default function Introduction() {
           w różnorakich technologiach od pisania API aż po aplikacjie na
           komputery stacjonarne
         </p>
+        <TableOfContents
+          chapters={[
+            {
+              title: "Funkcje",
+              sections: [
+                {
+                  content: "string",
+                  path: "/string/string",
+                  title: "lorem ipsum",
+                },
+              ],
+            },
+          ]}></TableOfContents>
       </section>
-      <TableOfContents></TableOfContents>
     </>
   );
 }

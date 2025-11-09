@@ -5,7 +5,7 @@ import { LanguageButton } from "../ui";
 const Header = () => {
   return (
     <header className="max-w-7xl mx-auto mt-20">
-      <h1 className="text-4xl font-bold">
+      <h1 className="text-5xl font-bold">
         Wybierz język, który cię interesuje
       </h1>
       <ul className="grid grid-cols-3 h-96 gap-5 mt-10">

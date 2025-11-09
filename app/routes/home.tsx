@@ -1,4 +1,4 @@
-import { Footer, Header, Navbar, TableOfContents } from "~/components/modules";
+import { Header } from "~/components/modules";
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
