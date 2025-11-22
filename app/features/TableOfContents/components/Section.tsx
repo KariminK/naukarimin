@@ -1,3 +1,4 @@
+import { randomUUID } from "crypto";
 import { Link } from "react-router";
 
 interface SectionProps {
