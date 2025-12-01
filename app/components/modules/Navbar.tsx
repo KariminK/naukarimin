@@ -11,13 +11,13 @@ const Navbar = () => {
       </NavLink>
       <ul className="flex gap-8  items-center">
         <li>
-          <NavLink to={"/Python"}>Python</NavLink>
+          <NavLink to={"/language/Python"}>Python</NavLink>
         </li>
         <li>
-          <NavLink to={"/Javascript"}>Javascript</NavLink>
+          <NavLink to={"/language/Javascript"}>Javascript</NavLink>
         </li>
         <li>
-          <NavLink to={"/C++"}>C++</NavLink>
+          <NavLink to={"/language/C++"}>C++</NavLink>
         </li>
       </ul>
     </nav>

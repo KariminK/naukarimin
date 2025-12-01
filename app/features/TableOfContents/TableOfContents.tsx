@@ -14,7 +14,7 @@ const TableOfContents = ({ chapters }: TableOfContentsProps) => {
             {chapter.sections.map((section, sectionIndex) => (
               <SectionElement
                 content={section.content}
-                path={section.path}
+                title={section.title}
                 key={(sectionIndex + 1) * 100}
                 order={
                   String(chapterIndex + 1) + "." + (sectionIndex + 1)

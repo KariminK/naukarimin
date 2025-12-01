@@ -1,6 +1,5 @@
 interface Section {
   content: string;
-  path: string;
   title: string;
 }
 
