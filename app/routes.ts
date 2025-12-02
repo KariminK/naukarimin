@@ -9,6 +9,7 @@ export default [
   layout("./components/layouts/DefaultLayout.tsx", [
     index("routes/home.tsx"),
     route("/language/:lang", "routes/introduction.tsx"),
+    route("/language/:lang/:article", "routes/article.tsx"),
     route("/*", "routes/404.tsx"),
   ]),
 ] satisfies RouteConfig;
