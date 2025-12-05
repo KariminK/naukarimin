@@ -1,3 +1,4 @@
 import LanguageButton from "./LanguageButton";
+import Button from "./Button";
 
-export { LanguageButton };
+export { LanguageButton, Button };
