@@ -11,7 +11,7 @@ export default [
     route("/language/:lang", "routes/introduction.tsx"),
     route("/language/:lang/:article", "routes/article.tsx"),
     route("/editor", "routes/editor.tsx"),
-    route("/admin", "routes/admin.tsx"),
+    route("/admin/login", "routes/login.tsx"),
     route("/*", "routes/404.tsx"),
   ]),
 ] satisfies RouteConfig;
