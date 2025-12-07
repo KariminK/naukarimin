@@ -8,7 +8,7 @@ const authMiddleware: Route.MiddlewareFunction = async ({
 }) => {
   const user = context.get(AuthContext);
 
-  if (!user) throw redirect("/login");
+  if (!user) throw redirect("/admin/login");
 };
 
 export default authMiddleware;
