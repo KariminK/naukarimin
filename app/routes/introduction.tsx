@@ -3,25 +3,7 @@ import prisma from "~/db/prisma";
 import { TableOfContents } from "~/features";
 import type { Route } from "../+types/root";
 import ErrorNotFound from "./404";
-
-type LanguageWithChaptersAndSections = {
-  chapters: ({
-    sections: {
-      id: number;
-      title: string;
-      content: string;
-      chapterId: number | null;
-    }[];
-  } & {
-    id: number;
-    title: string;
-    languageId: number | null;
-  })[];
-} & {
-  id: number;
-  name: string;
-  description: string;
-};
+import type { LanguageWithChaptersAndSections } from "~/types";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const languageName = params.lang;

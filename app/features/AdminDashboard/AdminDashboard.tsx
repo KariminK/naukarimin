@@ -11,17 +11,17 @@ const AdminDashboard = () => {
       <h1 className="text-5xl font-bold">Wybierz język</h1>
       <ul className="grid grid-cols-3 h-96 gap-5 mt-10">
         <LanguageButton
-          link="/admin/Python"
+          link="/admin/language/Python"
           icon={<FaPython size={"200px"} />}
           language="Python"
         />
         <LanguageButton
-          link="/admin/C++"
+          link="/admin/language/C++"
           icon={<SiCplusplus size={"200px"} />}
           language="C++"
         />
         <LanguageButton
-          link="/admin/Javascript"
+          link="/admin/language/Javascript"
           icon={<SiJavascript size={"200px"} />}
           language="Javascript"
         />
