@@ -15,7 +15,14 @@ export default [
     ...prefix("/admin", [
       index("routes/dashboard.tsx"),
       route("login", "routes/login.tsx"),
-      route("language/:lang", "routes/adminLanguage.tsx"),
+      route("language/:lang", "routes/adminLanguage.tsx", [
+        index("features/AdminViews/ChapterView.tsx"),
+        route(":chapterTitle", "features/AdminViews/SectionView.tsx"),
+      ]),
+      route(
+        "language/:lang/:chapterTitle/:articleTitle",
+        "routes/adminArticle.tsx"
+      ),
     ]),
     route("/*", "routes/404.tsx"),
   ]),

@@ -1,10 +1,11 @@
-import { Form, Link, type LoaderFunctionArgs } from "react-router";
+import { Form, Link, Outlet, type LoaderFunctionArgs } from "react-router";
 import prisma from "~/db/prisma";
 import type { Route } from "./+types/adminLanguage";
 import type { LanguageWithChaptersAndSections } from "~/types";
 import ErrorNotFound from "./404";
 import { Button } from "~/components/ui";
 import { useState } from "react";
+import { ChapterView } from "~/features";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const languageName = params.lang;
@@ -55,17 +56,7 @@ export default function AdminLanguageView({
         </label>
         <Button classname="w-full">Edytuj</Button>
       </Form>
-      <h2 className="my-10">Rozdziały:</h2>
-      <ul className="list-none my-10">
-        {language.chapters.map((chapter, index) => (
-          <li className="my-5 text-blue-400 underline" key={index}>
-            <Link to={`/admin/language/${language.name}/${chapter.title}`}>
-              {chapter.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <Button>Dodaj rozdział</Button>
+      <Outlet context={language} />
     </main>
   );
 }
