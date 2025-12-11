@@ -1,11 +1,22 @@
-import { Form, Link, Outlet, type LoaderFunctionArgs } from "react-router";
+import { Form, Outlet, type LoaderFunctionArgs } from "react-router";
 import prisma from "~/db/prisma";
 import type { Route } from "./+types/adminLanguage";
 import type { LanguageWithChaptersAndSections } from "~/types";
 import ErrorNotFound from "./404";
 import { Button } from "~/components/ui";
 import { useState } from "react";
-import { ChapterView } from "~/features";
+
+export async function action({ request, params }: Route.ActionArgs) {
+  const formData = await request.formData();
+  const description = formData.get("description") as string;
+  const languageName = params.lang;
+
+  const updated = await prisma.language.updateMany({
+    where: { name: languageName },
+    data: { description },
+  });
+  return updated;
+}
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const languageName = params.lang;
@@ -27,6 +38,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 }
 export default function AdminLanguageView({
   loaderData,
+  actionData,
 }: Route.ComponentProps) {
   const language =
     loaderData as unknown as LanguageWithChaptersAndSections | null;
@@ -43,7 +55,7 @@ export default function AdminLanguageView({
         {language.name}
       </h1>
       <h2>Opis języka:</h2>
-      <Form method="post">
+      <Form method="put">
         <label htmlFor="langDescription">
           <textarea
             name="description"
@@ -56,6 +68,9 @@ export default function AdminLanguageView({
         </label>
         <Button classname="w-full">Edytuj</Button>
       </Form>
+      {actionData && (
+        <p className="text-green-400 my-5">Zaktualizowano opis pomyślnie</p>
+      )}
       <Outlet context={language} />
     </main>
   );

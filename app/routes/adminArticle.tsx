@@ -44,7 +44,7 @@ export default function AdminArticle({ loaderData }: Route.ComponentProps) {
             name="editedContent"
             onChange={(ev) => setContent(ev.target.value)}
             value={content}></textarea>
-          <Button classname="w-full">Edytuj</Button>
+          <Button classname="w-full">Zapisz</Button>
         </section>
         <section>
           <h2>Podgląd:</h2>
