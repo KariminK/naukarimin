@@ -1,5 +1,5 @@
-import { Link, useOutletContext } from "react-router";
-import { Button } from "~/components/ui";
+import { Form, Link, useOutletContext } from "react-router";
+import { Button, TextInput } from "~/components/ui";
 import type { LanguageWithChaptersAndSections } from "~/types";
 
 const ChapterView = () => {
@@ -16,7 +16,15 @@ const ChapterView = () => {
           </li>
         ))}
       </ul>
-      <Button>Dodaj rozdział</Button>
+      <Form method="post" className="flex items-end justify-center gap-2">
+        <TextInput
+          id="newChapter"
+          type="text"
+          name="chapter"
+          label="Nowy rozdział"
+        />
+        <Button>Dodaj rozdział</Button>
+      </Form>
     </>
   );
 };

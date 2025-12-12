@@ -1,5 +1,5 @@
-import { Link, useOutletContext, useParams } from "react-router";
-import { Button } from "~/components/ui";
+import { Form, Link, useOutletContext, useParams } from "react-router";
+import { Button, TextInput } from "~/components/ui";
 import type { Chapter, Section } from "~/generated/prisma/client";
 import ErrorNotFound from "~/routes/404";
 import type { LanguageWithChaptersAndSections } from "~/types";
@@ -43,7 +43,15 @@ const SectionView = () => {
           </li>
         ))}
       </ul>
-      <Button>Dodaj sekcję</Button>
+      <Form method="post" className="flex items-end justify-center gap-2">
+        <TextInput
+          id="newSection"
+          type="text"
+          name="section"
+          label="Nowa sekcja"
+        />
+        <Button>Dodaj sekcję</Button>
+      </Form>
     </>
   );
 };

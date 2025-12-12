@@ -1,6 +1,5 @@
 import { Form } from "react-router";
-import { TextInput } from "./components";
-import { Button } from "~/components/ui";
+import { Button, TextInput } from "~/components/ui";
 
 const LoginForm = () => {
   return (
