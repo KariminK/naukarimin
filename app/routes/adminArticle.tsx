@@ -18,7 +18,6 @@ export async function action({ request, params }: ActionFunctionArgs) {
   const articleTitle = params.article;
   const languageName = params.lang;
   const chapterTitle = params.chapter;
-
   const updated = await prisma.section.updateMany({
     where: {
       title: articleTitle,

@@ -15,24 +15,24 @@ datasource db {
 }
 
 model Section {
-  id        Int      @id @default(autoincrement())
+  id        Int     @id @default(autoincrement())
   title     String
   content   String
-  chapter   Chapter? @relation(fields: [chapterId], references: [id])
-  chapterId Int?
+  chapter   Chapter @relation(fields: [chapterId], references: [id])
+  chapterId Int
 }
 
 model Chapter {
   id         Int       @id @default(autoincrement())
   title      String
   sections   Section[]
-  language   Language? @relation(fields: [languageId], references: [id])
-  languageId Int?
+  language   Language  @relation(fields: [languageId], references: [id])
+  languageId Int
 }
 
 model Language {
   id          Int       @id @default(autoincrement())
-  name        String
+  name        String    @unique
   description String
   chapters    Chapter[]
 }

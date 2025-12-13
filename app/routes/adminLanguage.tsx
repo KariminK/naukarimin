@@ -1,4 +1,9 @@
-import { Form, Outlet, type LoaderFunctionArgs } from "react-router";
+import {
+  Form,
+  Outlet,
+  type LoaderFunctionArgs,
+  type Params,
+} from "react-router";
 import prisma from "~/db/prisma";
 import type { Route } from "./+types/adminLanguage";
 import type { LanguageWithChaptersAndSections } from "~/types";
@@ -6,8 +11,7 @@ import ErrorNotFound from "./404";
 import { Button } from "~/components/ui";
 import { useState } from "react";
 
-export async function action({ request, params }: Route.ActionArgs) {
-  const formData = await request.formData();
+async function editArticleDescription(formData: FormData, params: Params) {
   const description = formData.get("description") as string;
   const languageName = params.lang;
 
@@ -16,6 +20,71 @@ export async function action({ request, params }: Route.ActionArgs) {
     data: { description },
   });
   return updated;
+}
+
+async function addChapter(formData: FormData, params: Params) {
+  const chapterTitle = formData.get("chapter") as string;
+  const languageName = params.lang;
+
+  const newChapter = await prisma.chapter.create({
+    data: {
+      title: chapterTitle,
+      language: {
+        connect: {
+          name: languageName,
+        },
+      },
+    },
+  });
+  return newChapter;
+}
+
+async function addSection(formData: FormData, params: Params) {
+  const sectionTitle = formData.get("section") as string;
+  const languageName = params.lang;
+  const chapterTitle = params.chapterTitle;
+
+  const chapter = await prisma.chapter.findFirst({
+    where: {
+      title: chapterTitle,
+      language: {
+        name: languageName,
+      },
+    },
+  });
+
+  if (chapter === null) throw new Error("failed to fetch chapter");
+
+  const newSection = await prisma.section.create({
+    data: {
+      title: sectionTitle,
+      content: "",
+      chapter: {
+        connect: {
+          id: chapter.id,
+        },
+      },
+    },
+  });
+  return newSection;
+}
+
+export async function action({ request, params }: Route.ActionArgs) {
+  const formData = await request.formData();
+  const intent = formData.get("intent");
+  console.log(intent);
+  try {
+    switch (intent) {
+      case "editDescription":
+        return await editArticleDescription(formData, params);
+      case "addChapter":
+        return await addChapter(formData, params);
+      case "addSection":
+        return await addSection(formData, params);
+    }
+  } catch (error) {
+    console.log("Erorr: ", error);
+  }
 }
 
 export async function loader({ params }: LoaderFunctionArgs) {
@@ -56,6 +125,7 @@ export default function AdminLanguageView({
       </h1>
       <h2>Opis języka:</h2>
       <Form method="put">
+        <input type="hidden" name="intent" value="editDescription" />
         <label htmlFor="langDescription">
           <textarea
             name="description"

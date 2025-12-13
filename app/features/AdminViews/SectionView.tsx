@@ -43,13 +43,17 @@ const SectionView = () => {
           </li>
         ))}
       </ul>
-      <Form method="post" className="flex items-end justify-center gap-2">
+      <Form
+        action={`/admin/language/${language.name}`}
+        method="post"
+        className="flex items-end justify-center gap-2">
         <TextInput
           id="newSection"
           type="text"
           name="section"
           label="Nowa sekcja"
         />
+        <input type="hidden" name="intent" value="addSection" />
         <Button>Dodaj sekcję</Button>
       </Form>
     </>

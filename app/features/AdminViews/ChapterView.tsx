@@ -16,13 +16,17 @@ const ChapterView = () => {
           </li>
         ))}
       </ul>
-      <Form method="post" className="flex items-end justify-center gap-2">
+      <Form
+        action={`/admin/language/${language.name}`}
+        method="post"
+        className="flex items-end justify-center gap-2">
         <TextInput
           id="newChapter"
           type="text"
           name="chapter"
           label="Nowy rozdział"
         />
+        <input type="hidden" name="intent" value="addChapter" />
         <Button>Dodaj rozdział</Button>
       </Form>
     </>
