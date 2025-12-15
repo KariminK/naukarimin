@@ -8,8 +8,6 @@ import { ArticleMarkdown } from "~/features";
 export async function loader({ params }: LoaderFunctionArgs) {
   const languageName = params.lang;
   const articleName = params.article;
-  console.log("languageName from params: ", languageName);
-  console.log("article name: ", articleName);
 
   const article = await prisma.section.findFirst({
     where: {
