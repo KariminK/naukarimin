@@ -28,7 +28,7 @@ const Article = ({ loaderData }: Route.ComponentProps) => {
   if (article === null) return <ErrorNotFound />;
 
   return (
-    <main className="max-w-3xl mx-auto">
+    <main className="max-w-3xl mx-auto md:px-0 px-3">
       <h1 className="text-3xl font-semibold text-slate-100 text-center pb-5 my-16">
         {article.title}
       </h1>

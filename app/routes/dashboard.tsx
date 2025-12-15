@@ -1,6 +1,6 @@
 import { AdminDashboard } from "~/features";
 import type { Route } from "./+types/login";
-import { AuthContext, authMiddleware } from "~/auth";
+import { authMiddleware } from "~/auth";
 
 export const middleware: Route.MiddlewareFunction[] = [authMiddleware];
 

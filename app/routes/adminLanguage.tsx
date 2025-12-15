@@ -5,11 +5,14 @@ import {
   type Params,
 } from "react-router";
 import prisma from "~/db/prisma";
-import type { Route } from "./+types/adminLanguage";
 import type { LanguageWithChaptersAndSections } from "~/types";
 import ErrorNotFound from "./404";
 import { Button } from "~/components/ui";
 import { useState } from "react";
+import type { Route } from "./+types/login";
+import { authMiddleware } from "~/auth";
+
+export const middleware: Route.MiddlewareFunction[] = [authMiddleware];
 
 async function editArticleDescription(formData: FormData, params: Params) {
   const description = formData.get("description") as string;

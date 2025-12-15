@@ -11,6 +11,9 @@ import ErrorNotFound from "./404";
 import { ArticleMarkdown } from "~/features";
 import { useState } from "react";
 import { Button } from "~/components/ui";
+import { authMiddleware } from "~/auth";
+
+export const middleware: Route.MiddlewareFunction[] = [authMiddleware];
 
 export async function action({ request, params }: ActionFunctionArgs) {
   const formData = await request.formData();
