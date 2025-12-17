@@ -1,22 +1,43 @@
-FROM node:20-alpine AS development-dependencies-env
-COPY . /app
+############################################
+# 1️⃣ Build stage (dev deps + prisma)
+############################################
+FROM node:20-alpine AS build
 WORKDIR /app
+
+COPY package.json package-lock.json ./
+COPY prisma ./prisma
+
 RUN npm ci
+RUN npx prisma generate
 
-FROM node:20-alpine AS production-dependencies-env
-COPY ./package.json package-lock.json /app/
-WORKDIR /app
-RUN npm ci --omit=dev
-
-FROM node:20-alpine AS build-env
-COPY . /app/
-COPY --from=development-dependencies-env /app/node_modules /app/node_modules
-WORKDIR /app
+COPY . .
 RUN npm run build
 
-FROM node:20-alpine
-COPY ./package.json package-lock.json /app/
-COPY --from=production-dependencies-env /app/node_modules /app/node_modules
-COPY --from=build-env /app/build /app/build
+
+############################################
+# 2️⃣ Production deps (no dev deps)
+############################################
+FROM node:20-alpine AS prod-deps
 WORKDIR /app
+
+COPY package.json package-lock.json ./
+COPY prisma ./prisma
+
+RUN npm ci --omit=dev
+RUN npx prisma generate
+
+
+############################################
+# 3️⃣ Runtime
+############################################
+FROM node:20-alpine
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+COPY package.json package-lock.json ./
+COPY --from=prod-deps /app/node_modules ./node_modules
+COPY --from=build /app/build ./build
+
+EXPOSE 3000
 CMD ["npm", "run", "start"]
