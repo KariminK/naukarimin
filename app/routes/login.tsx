@@ -2,6 +2,7 @@ import { LoginForm } from "~/features";
 import type { Route } from "./+types/login";
 import { AuthContext } from "~/auth";
 import { redirect } from "react-router";
+import { commitSession, getSession } from "~/sessions.server";
 
 // export const middleware: Route.MiddlewareFunction[] = [authMiddleware];
 
@@ -16,8 +17,13 @@ export async function action({ request, context }: Route.ActionArgs) {
   console.log(ADMIN_PASSWORD);
 
   if (login === ADMIN_LOGIN && password === ADMIN_PASSWORD) {
-    context.set(AuthContext, ADMIN_SECRET);
-    return redirect("/admin");
+    const session = await getSession(request.headers.get("Cookie"));
+    session.set("userId", ADMIN_SECRET);
+    return redirect("/admin", {
+      headers: {
+        "Set-Cookie": await commitSession(session),
+      },
+    });
   } else {
     return "Invalid login or password";
   }
