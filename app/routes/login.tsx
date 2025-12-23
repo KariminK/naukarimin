@@ -1,6 +1,5 @@
 import { LoginForm } from "~/features";
 import type { Route } from "./+types/login";
-import { AuthContext } from "~/auth";
 import { redirect } from "react-router";
 import { commitSession, getSession } from "~/sessions.server";
 

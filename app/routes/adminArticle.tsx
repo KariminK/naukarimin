@@ -5,13 +5,13 @@ import {
   type LoaderFunctionArgs,
 } from "react-router";
 import prisma from "~/db/prisma";
-import type { Route } from "./+types/adminArticle";
-import type { Section } from "~/generated/prisma/client";
+import type { Route } from "./+types/login";
+import type { Section } from "@prisma/client";
 import ErrorNotFound from "./404";
 import { ArticleMarkdown } from "~/features";
 import { useState } from "react";
 import { Button } from "~/components/ui";
-import { authMiddleware } from "~/auth";
+import authMiddleware from "~/authMiddleware.server";
 
 export const middleware: Route.MiddlewareFunction[] = [authMiddleware];
 

@@ -10,7 +10,7 @@ import ErrorNotFound from "./404";
 import { Button } from "~/components/ui";
 import { useState } from "react";
 import type { Route } from "./+types/login";
-import { authMiddleware } from "~/auth";
+import authMiddleware from "~/authMiddleware.server";
 
 export const middleware: Route.MiddlewareFunction[] = [authMiddleware];
 
