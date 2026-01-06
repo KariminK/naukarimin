@@ -40,7 +40,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const languageName = params.lang;
-  const articleName = params.article;
+  const articleName = params.articleTitle;
 
   const article = await prisma.section.findFirst({
     where: {
