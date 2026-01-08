@@ -18,7 +18,7 @@ export const middleware: Route.MiddlewareFunction[] = [authMiddleware];
 export async function action({ request, params }: ActionFunctionArgs) {
   const formData = await request.formData();
   const editedContent = formData.get("editedContent") as string;
-  const articleTitle = params.article;
+  const articleTitle = params.articleTitle;
   const languageName = params.lang;
   const chapterTitle = params.chapter;
   const updated = await prisma.section.updateMany({
