@@ -1,7 +1,6 @@
 import Markdown from "react-markdown";
 import { LightAsync as SyntaxHighlighter } from "react-syntax-highlighter";
 import nightOwl from "react-syntax-highlighter/dist/esm/styles/hljs/night-owl";
-import type { Section } from "~/generated/prisma/client";
 
 type props = {
   lang: string;
@@ -18,7 +17,7 @@ const ArticleMarkdown = ({ lang, children }: props) => {
           </h1>
         ),
         h2: ({ children }) => (
-          <h2 className="text-xl/loose font-bold">
+          <h2 className="text-xl/loose font-semibold pt-4">
             <>{children}</>
           </h2>
         ),
@@ -37,7 +36,7 @@ const ArticleMarkdown = ({ lang, children }: props) => {
               break;
           }
           return (
-            <div className="rounded-lg overflow-hidden border border-slate-800">
+            <div className="rounded-lg overflow-hidden border border-slate-800 my-5">
               <SyntaxHighlighter
                 language={highlighterLangName}
                 style={nightOwl}
@@ -50,7 +49,7 @@ const ArticleMarkdown = ({ lang, children }: props) => {
           );
         },
         p: ({ children }) => (
-          <p className="text-base/loose  text-slate-200 my-1">
+          <p className="text-base/loose  text-slate-200 my-3">
             <>{children}</>
           </p>
         ),
