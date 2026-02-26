@@ -5,7 +5,7 @@ const Footer = () => {
         Stworzone przez{" "}
         <a
           className="font-bold underline text-sky-500"
-          href="https://github.com/Karimink">
+          href="https://karimink.github.io">
           Karimin
         </a>
       </p>
