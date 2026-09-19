@@ -17,7 +17,7 @@ const SectionView = () => {
   const language = useOutletContext() as LanguageWithChaptersAndSections;
   const { chapterTitle } = useParams();
   const chapter = language.chapters.find(
-    (chapter) => chapter.title === chapterTitle
+    (chapter) => chapter.title === chapterTitle,
   );
 
   if (!chapter) return <ErrorNotFound />;
@@ -54,6 +54,7 @@ const SectionView = () => {
           label="Nowa sekcja"
         />
         <input type="hidden" name="intent" value="addSection" />
+        <input type="hidden" name="chapterTitle" value={chapter.title} />
         <Button>Dodaj sekcję</Button>
       </Form>
     </>

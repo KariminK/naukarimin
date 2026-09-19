@@ -46,6 +46,7 @@ async function addSection(formData: FormData, params: Params) {
   const sectionTitle = formData.get("section") as string;
   const languageName = params.lang;
   const chapterTitle = params.chapterTitle;
+  console.log(params);
 
   const chapter = await prisma.chapter.findFirst({
     where: {
@@ -75,6 +76,7 @@ async function addSection(formData: FormData, params: Params) {
 export async function action({ request, params }: Route.ActionArgs) {
   const formData = await request.formData();
   const intent = formData.get("intent");
+  const chapterTitle = formData.get("chapterTitle")?.toString();
   console.log(intent);
   try {
     switch (intent) {
@@ -83,7 +85,7 @@ export async function action({ request, params }: Route.ActionArgs) {
       case "addChapter":
         return await addChapter(formData, params);
       case "addSection":
-        return await addSection(formData, params);
+        return await addSection(formData, { ...params, chapterTitle });
     }
   } catch (error) {
     console.log("Erorr: ", error);
@@ -118,7 +120,7 @@ export default function AdminLanguageView({
   if (language === null) return <ErrorNotFound />;
 
   const [languageDescription, setLanguageDescription] = useState(
-    language.description
+    language.description,
   );
 
   return (

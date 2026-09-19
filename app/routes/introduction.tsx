@@ -14,8 +14,15 @@ export async function loader({ params }: LoaderFunctionArgs) {
     },
     include: {
       chapters: {
+        orderBy: {
+          created_at: "desc",
+        },
         include: {
-          sections: true,
+          sections: {
+            orderBy: {
+              created_at: "desc",
+            },
+          },
         },
       },
     },

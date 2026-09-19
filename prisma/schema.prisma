@@ -15,17 +15,19 @@ datasource db {
 }
 
 model Section {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String
-  chapter   Chapter @relation(fields: [chapterId], references: [id])
-  chapterId Int
+  id         Int      @id @default(autoincrement())
+  title      String
+  content    String
+  created_at DateTime @default(now())
+  chapter    Chapter  @relation(fields: [chapterId], references: [id])
+  chapterId  Int
 }
 
 model Chapter {
   id         Int       @id @default(autoincrement())
   title      String
   sections   Section[]
+  created_at DateTime  @default(now())
   language   Language  @relation(fields: [languageId], references: [id])
   languageId Int
 }
