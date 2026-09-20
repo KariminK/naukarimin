@@ -20,7 +20,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
         include: {
           sections: {
             orderBy: {
-              created_at: "desc",
+              created_at: "asc",
             },
           },
         },
