@@ -15,7 +15,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
     include: {
       chapters: {
         orderBy: {
-          created_at: "desc",
+          created_at: "asc",
         },
         include: {
           sections: {
