@@ -12,14 +12,19 @@ const ArticleMarkdown = ({ lang, children }: props) => {
     <Markdown
       components={{
         h1: ({ children }) => (
-          <h1 className="text-2xl/loose font-bold">
+          <h1 className="text-3xl font-bold pt-8">
             <>{children}</>
           </h1>
         ),
         h2: ({ children }) => (
-          <h2 className="text-xl/loose font-semibold pt-4">
+          <h2 className="text-2xl font-semibold pt-8">
             <>{children}</>
           </h2>
+        ),
+        h3: ({ children }) => (
+          <h3 className="text-xl font-semibold pt-5">
+            <>{children}</>
+          </h3>
         ),
         code: ({ children }) => {
           const code = String(children).replaceAll("\\n", "\n");
@@ -52,6 +57,11 @@ const ArticleMarkdown = ({ lang, children }: props) => {
           <p className="text-base/loose  text-slate-200 my-3">
             <>{children}</>
           </p>
+        ),
+        ol: ({ children }) => (
+          <ol className="list-decimal text-lg block mb-3 text-slate-100 list-inside">
+            <>{children}</>
+          </ol>
         ),
         ul: ({ children }) => (
           <ul className="list-disc text-lg block mb-3 text-slate-100 list-inside">
