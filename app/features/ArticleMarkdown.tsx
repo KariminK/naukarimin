@@ -73,8 +73,10 @@ const ArticleMarkdown = ({ lang, children }: props) => {
             <>{children}</>
           </li>
         ),
-        a: ({ children }) => (
-          <a className="text-base/loose print:text-base/tight text-sky-500 underline">
+        a: ({ children, href }) => (
+          <a
+            href={href}
+            className="text-base/loose cursor-pointer print:text-base/tight text-sky-500 underline">
             {children}
           </a>
         ),
