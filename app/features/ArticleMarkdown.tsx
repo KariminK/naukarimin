@@ -73,6 +73,11 @@ const ArticleMarkdown = ({ lang, children }: props) => {
             <>{children}</>
           </li>
         ),
+        a: ({ children }) => (
+          <a className="text-base/loose print:text-base/tight text-sky-500 underline">
+            {children}
+          </a>
+        ),
       }}>
       {children}
     </Markdown>
