@@ -27,7 +27,7 @@ const Article = ({ loaderData }: Route.ComponentProps) => {
 
   return (
     <main className="max-w-3xl mx-auto md:px-0 px-3">
-      <h1 className="text-3xl font-semibold text-slate-100 text-center pb-5 my-16">
+      <h1 className="text-3xl font-semibold text-slate-100 not-dark:text-slate-900 text-center pb-5 my-16 print:my-2">
         {article.title}
       </h1>
       <ArticleMarkdown lang={lang}>{article.content}</ArticleMarkdown>

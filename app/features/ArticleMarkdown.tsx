@@ -12,17 +12,17 @@ const ArticleMarkdown = ({ lang, children }: props) => {
     <Markdown
       components={{
         h1: ({ children }) => (
-          <h1 className="text-3xl font-bold pt-8">
+          <h1 className="text-3xl print:text-2xl print:pt-4 print:text-black not-dark:text-slate-900 font-bold pt-8">
             <>{children}</>
           </h1>
         ),
         h2: ({ children }) => (
-          <h2 className="text-2xl font-semibold pt-8">
+          <h2 className="text-lg print:pt-4 print:text-black not-dark:text-slate-900 font-semibold pt-8">
             <>{children}</>
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="text-xl font-semibold pt-5">
+          <h3 className="text-base print:text-lg print:pt-2 print:text-black not-dark:text-slate-900 font-semibold pt-5">
             <>{children}</>
           </h3>
         ),
@@ -54,22 +54,22 @@ const ArticleMarkdown = ({ lang, children }: props) => {
           );
         },
         p: ({ children }) => (
-          <p className="text-base/loose  text-slate-200 my-3">
+          <p className="text-base/loose print:text-base/tight print:my-2 print:text-black  text-slate-200 not-dark:text-slate-800 my-5">
             <>{children}</>
           </p>
         ),
         ol: ({ children }) => (
-          <ol className="list-decimal text-lg block mb-3 text-slate-100 list-inside">
+          <ol className="list-decimal text-base print:text-md block py-5 print:mb-2 text-slate-100 print:text-black not-dark:text-slate-800 list-inside">
             <>{children}</>
           </ol>
         ),
         ul: ({ children }) => (
-          <ul className="list-disc text-lg block mb-3 text-slate-100 list-inside">
+          <ul className="list-disc text-base print:text-md block py-5 print:mb-2 text-slate-100 print:text-black not-dark:text-slate-800 list-inside">
             <>{children}</>
           </ul>
         ),
         li: ({ children }) => (
-          <li className="leading-loose">
+          <li className="leading-loose print:leading-tight">
             <>{children}</>
           </li>
         ),

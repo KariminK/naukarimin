@@ -8,8 +8,10 @@ interface ChapterProps {
 const ChapterElement = ({ title, children }: ChapterProps) => {
   return (
     <li className="mt-10">
-      <p className="font-bold">{title}</p>
-      <ol className="list-inside grid grid-cols-3 mt-2 mb-5">{children}</ol>
+      <p className="font-bold not-dark:text-slate-900">{title}</p>
+      <ol className="list-inside grid sm:grid-cols-2 md:grid-cols-3 grid-cols-1 mt-2 mb-5">
+        {children}
+      </ol>
     </li>
   );
 };

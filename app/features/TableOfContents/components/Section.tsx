@@ -9,10 +9,10 @@ interface SectionProps {
 const SectionElement = ({ content, order, title }: SectionProps) => {
   return (
     <li className="my-2">
-      <span className="mr-3 font-mono">{order}</span>
+      <span className="mr-3 font-mono not-dark:text-slate-900">{order}</span>
       <Link
         to={title.replaceAll("?", "_qm_")}
-        className="text-sky-500 underline">
+        className="text-sky-500 not-dark:text-sky-600 underline">
         {title}
       </Link>
     </li>

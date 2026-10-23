@@ -40,10 +40,12 @@ export default function Introduction({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <section className="max-w-7xl text-center mx-auto">
-        <h1 className="text-center mt-20 font-bold text-4xl mb-5">
+        <h1 className="text-center not-dark:text-slate-900 mt-20 font-bold text-4xl mb-5">
           {language.name}
         </h1>
-        <p className="text-slate-200">{language.description}</p>
+        <p className="text-slate-200 not-dark:text-slate-700">
+          {language.description}
+        </p>
         <TableOfContents chapters={language.chapters}></TableOfContents>
       </section>
     </>

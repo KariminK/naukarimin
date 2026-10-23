@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="text-center p-10 text-slate-300 ">
+    <footer className="text-center p-10 print:hidden text-slate-300 not-dark:text-slate-700 ">
       <p>
         Stworzone przez{" "}
         <a
