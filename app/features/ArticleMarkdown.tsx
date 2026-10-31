@@ -1,6 +1,7 @@
 import Markdown from "react-markdown";
 import { LightAsync as SyntaxHighlighter } from "react-syntax-highlighter";
 import nightOwl from "react-syntax-highlighter/dist/esm/styles/hljs/night-owl";
+import { CodeHighlighter } from "~/components/ui";
 
 type props = {
   lang: string;
@@ -42,14 +43,9 @@ const ArticleMarkdown = ({ lang, children }: props) => {
           }
           return (
             <div className="rounded-lg overflow-hidden border border-slate-800 my-5">
-              <SyntaxHighlighter
-                language={highlighterLangName}
-                style={nightOwl}
-                customStyle={{
-                  padding: "1rem",
-                }}>
+              <CodeHighlighter language={highlighterLangName}>
                 {code}
-              </SyntaxHighlighter>
+              </CodeHighlighter>
             </div>
           );
         },

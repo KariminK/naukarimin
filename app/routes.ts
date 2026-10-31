@@ -11,6 +11,7 @@ export default [
     index("routes/home.tsx"),
     route("/language/:lang", "routes/introduction.tsx"),
     route("/language/:lang/:article", "routes/article.tsx"),
+    route("/cheatsheets/css", "routes/cssCheatsheet.tsx"),
     route("/editor", "routes/editor.tsx"),
     ...prefix("/admin", [
       index("routes/dashboard.tsx"),
@@ -21,7 +22,7 @@ export default [
       ]),
       route(
         "language/:lang/:chapterTitle/:articleTitle",
-        "routes/adminArticle.tsx"
+        "routes/adminArticle.tsx",
       ),
     ]),
     route("/*", "routes/404.tsx"),
