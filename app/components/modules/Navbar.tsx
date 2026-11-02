@@ -9,7 +9,7 @@ const Navbar = () => {
           <h1 className="hidden sm:block font-poppins font-bold">Naukarimin</h1>
         </div>
       </NavLink>
-      <ul className="flex gap-8  items-center">
+      <ul className="flex gap-8 items-center">
         <li>
           <NavLink to={"/language/Python"}>Python</NavLink>
         </li>
