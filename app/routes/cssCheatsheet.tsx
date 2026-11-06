@@ -6,6 +6,7 @@ export default function CSSCheatsheet() {
       <h1 className="text-center text-2xl font-bold mt-3">Ściąga CSS</h1>
       <ul className="grid p-2 lg:grid-cols-3 gap-5 flex-wrap mt-5 mx-auto max-w-7xl">
         <CheatsheetSection
+          liKey={1}
           title="Podstawy"
           content={[
             {
@@ -21,6 +22,7 @@ export default function CSSCheatsheet() {
           ]}
         />
         <CheatsheetSection
+          liKey={2}
           title="Selektory"
           content={[
             {
@@ -57,6 +59,7 @@ export default function CSSCheatsheet() {
           ]}
         />
         <CheatsheetSection
+          liKey={3}
           title="Odstępy"
           content={[
             {
@@ -72,6 +75,7 @@ export default function CSSCheatsheet() {
           ]}
         />
         <CheatsheetSection
+          liKey={4}
           title="Rozmiary"
           content={[
             {
@@ -97,6 +101,7 @@ export default function CSSCheatsheet() {
           ]}
         />
         <CheatsheetSection
+          liKey={5}
           title="Kolory"
           content={[
             {
@@ -122,6 +127,7 @@ export default function CSSCheatsheet() {
           ]}
         />
         <CheatsheetSection
+          liKey={6}
           title="Ramka"
           content={[
             {
@@ -147,6 +153,7 @@ export default function CSSCheatsheet() {
           ]}
         />
         <CheatsheetSection
+          liKey={7}
           title="Tekst"
           content={[
             {
@@ -182,6 +189,7 @@ export default function CSSCheatsheet() {
           ]}
         />
         <CheatsheetSection
+          liKey={8}
           title="Tło"
           content={[
             {
@@ -207,6 +215,7 @@ export default function CSSCheatsheet() {
           ]}
         />
         <CheatsheetSection
+          liKey={9}
           title="Transformacje"
           content={[
             {
@@ -248,6 +257,7 @@ export default function CSSCheatsheet() {
         />
 
         <CheatsheetSection
+          liKey={10}
           title="Flexbox dla kontenera"
           content={[
             {
@@ -285,6 +295,7 @@ export default function CSSCheatsheet() {
           ]}
         />
         <CheatsheetSection
+          liKey={11}
           title="Flexbox dla elementu w kontenerze"
           content={[
             {
